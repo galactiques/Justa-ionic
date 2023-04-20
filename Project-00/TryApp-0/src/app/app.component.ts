@@ -13,7 +13,7 @@ import { IonicModule } from '@ionic/angular';
 export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/folder/home', icon: 'home' },
-    { title: 'Vendas', url: '/folder/vendas', icon: 'receipt' },
+    { title: 'Vendas', url: '/vendas', icon: 'receipt' },
     { title: 'Empréstimos', url: '/folder/emprestimos', icon: 'cash' },
     { title: 'Recebíveis', url: '/folder/recebiveis', icon: 'wallet' },
     { title: 'Conta', url: '/folder/conta', icon: 'person' },
