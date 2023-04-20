@@ -23,6 +23,24 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- Exibe o conteúdo atualizado com base na opção selecionada -->
-  <div class="conteudo-exibido">{{ conteudoExibido }}</div>
+  <ion-card *ngIf="faturamento">
+    <ion-card-header>
+      <ion-card-title class="titulo-vendas ion-text-capitalize ion-text-center" style="color: #007bff">Faturamento</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="conteudo-vendas ion-text-center ion-text-large" style="color: #ffffff;">{{ faturamento }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="quantidade_vendas">
+    <ion-card-header>
+      <ion-card-title class="titulo-vendas ion-text-capitalize ion-text-center" style="color: #007bff">Vendas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="conteudo-vendas ion-text-center ion-text-large" style="color: #ffffff;">{{ quantidade_vendas }}</p>
+    </ion-card-content>
+  </ion-card>
+
+
+
 </ion-content>

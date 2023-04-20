@@ -14,3 +14,28 @@ ion-toolbar {
   --ion-color-primary: #006ef5;
   color: #fff;
 }
+
+.barra-azul {
+  background-color: #007bff;
+  height: 5px;
+}
+
+/* Esconde os elementos em dispositivos médios e maiores */
+.ion-hide-md-down {
+  display: none;
+}
+
+/* Esconde os elementos em dispositivos pequenos */
+.ion-hide-sm-up {
+  display: none;
+}
+
+
+  .titulo-vendas {
+    font-size: 24px;
+  }
+
+  .conteudo-vendas {
+    font-size: 20px;
+  }
+

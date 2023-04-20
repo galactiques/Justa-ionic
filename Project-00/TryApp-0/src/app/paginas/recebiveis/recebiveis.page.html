@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Recebíveis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Recebíveis</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Saldo em conta</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+       <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R$ {{ saldo_em_conta.toFixed(2).replace('.', ',') }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label class="ion-text-center">
+      <h1 class="ion-text-center">Adiantamento de recebíveis</h1>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label class="ion-text-center">
+      <h2 class="ion-text-center">Você tem a opção de adiantar até 140% do seu saldo atual(lógica a se pensar ainda)</h2>
+      <p class="ion-text-center">Retorno da quantia em 30 dias, com juros de 8%</p>
+    </ion-label>
+  </ion-item>
+
+</ion-content>
