@@ -2,13 +2,63 @@
     "Venda": [
         {
             "nome": "Lucas",
-            "venda": "Teste",
-            "valor": "8000"
+            "venda": "Teste1",
+            "valor": 15
         },
         {
             "nome": "Luan",
             "venda": "Teste 2",
-            "valor": "4000"
+            "valor": 10
+        },
+        {
+            "nome": "Arthur",
+            "venda": "Teste 3",
+            "valor": 5
+        },
+          {
+            "nome": "Lucas",
+            "venda": "Teste 4",
+            "valor": 20
+        },
+        {
+            "nome": "Luan",
+            "venda": "Teste 5",
+            "valor": 25
+        },
+        {
+            "nome": "Arthur",
+            "venda": "Teste 6",
+            "valor": 50
+        },
+        {
+            "nome": "Lucas",
+            "venda": "Teste 7",
+            "valor": 60
+        },
+        {
+            "nome": "Luan",
+            "venda": "Teste 8",
+            "valor": 80
+        },
+        {
+            "nome": "Arthur",
+            "venda": "Teste 9",
+            "valor": 90
+        },
+        {
+            "nome": "Lucas",
+            "venda": "Teste 10",
+            "valor": 91
+        },
+        {
+            "nome": "Luan",
+            "venda": "Teste 11",
+            "valor": 42
+        },
+        {
+            "nome": "Arthur",
+            "venda": "Teste 12",
+            "valor": 46
         }
     ]
 

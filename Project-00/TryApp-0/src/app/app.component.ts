@@ -34,9 +34,15 @@ export class AppComponent {
       });
   }
 
+ 
 
   ngOnInit() {
     this.obterNomeDoServidor();
+    
   }
+
+  
+
+  
   // Chame o método obterNomeDoServidor() em algum evento ou momento apropriado
 }
