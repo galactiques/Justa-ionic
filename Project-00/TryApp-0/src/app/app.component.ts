@@ -23,7 +23,7 @@ export class AppComponent {
   ];
   public labels = ['Rendimentos', 'Informações'];
 
-  constructor(private http: HttpClient) {} // Injete o HttpClient no construtor
+  constructor(private http: HttpClient) {}
 
 
   obterNomeDoServidor() {
@@ -34,15 +34,12 @@ export class AppComponent {
       });
   }
 
- 
 
+//Chamando
   ngOnInit() {
     this.obterNomeDoServidor();
-    
+
   }
 
-  
 
-  
-  // Chame o método obterNomeDoServidor() em algum evento ou momento apropriado
 }
