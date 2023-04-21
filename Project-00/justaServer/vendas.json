@@ -2,63 +2,68 @@
     "Venda": [
         {
             "nome": "Lucas",
-            "venda": "Teste1",
-            "valor": 15
+            "venda": 5,
+            "valor": 12000
         },
         {
             "nome": "Luan",
-            "venda": "Teste 2",
-            "valor": 10
+            "venda": 8,
+            "valor": 10000
         },
         {
             "nome": "Arthur",
-            "venda": "Teste 3",
-            "valor": 5
+            "venda": 7,
+            "valor": 8555
         },
           {
             "nome": "Lucas",
-            "venda": "Teste 4",
-            "valor": 20
+            "venda": 15,
+            "valor": 3521
         },
         {
             "nome": "Luan",
-            "venda": "Teste 5",
-            "valor": 25
+            "venda": 6,
+            "valor": 4582
         },
         {
             "nome": "Arthur",
-            "venda": "Teste 6",
-            "valor": 50
+            "venda": 7,
+            "valor": 1968
         },
         {
             "nome": "Lucas",
-            "venda": "Teste 7",
-            "valor": 60
+            "venda": 7,
+            "valor": 9852
         },
         {
             "nome": "Luan",
-            "venda": "Teste 8",
-            "valor": 80
+            "venda": 9,
+            "valor": 9635
         },
         {
             "nome": "Arthur",
-            "venda": "Teste 9",
-            "valor": 90
+            "venda": 11,
+            "valor": 9258
         },
         {
             "nome": "Lucas",
-            "venda": "Teste 10",
-            "valor": 91
+            "venda": 8,
+            "valor": 9822
         },
         {
             "nome": "Luan",
-            "venda": "Teste 11",
-            "valor": 42
+            "venda": 7,
+            "valor": 10000
         },
         {
             "nome": "Arthur",
-            "venda": "Teste 12",
-            "valor": 46
+            "venda": 6,
+            "valor": 12000
+        }, 
+        {
+            "nome": "Arthur",
+            "venda": 8,
+            "valor": 15000
         }
     ]
 
