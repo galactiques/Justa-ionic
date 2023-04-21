@@ -12,6 +12,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class RecebiveisPage implements OnInit {
   saldo_em_conta: number = 32345.30;
+  adiantamento: number = 130;
 
   constructor() { }
 
