@@ -1,14 +1,16 @@
 {
     "Venda": [
         {
-            "id": "1",
+            "nome": "Lucas",
             "venda": "Teste",
-            "valor": "5000"
+            "valor": "8000"
         },
         {
-            "id": "2",
+            "nome": "Luan",
             "venda": "Teste 2",
             "valor": "4000"
         }
     ]
+
+
 }
