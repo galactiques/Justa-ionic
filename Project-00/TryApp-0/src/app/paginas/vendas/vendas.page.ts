@@ -13,8 +13,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VendasPage implements OnInit {
   public venda3: any[] = [];
+  public qtd3: any[] = [];
   public venda6: any[] = [];
+  public qtd6: any[] = [];
   public venda12: any[] = [];
+  public qtd12: any[] = [];
 
   saldo3Meses: number = 7560.50;
   quantidadeVendas3Meses: number = 15; // Nova variável para quantidade de vendas em 3 meses
@@ -32,7 +35,9 @@ export class VendasPage implements OnInit {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
         const vendas = response.Venda.slice(0, 3); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0); // Calcula a soma das vendas
+        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
+        this.qtd3 = somaqtd  // Calcula a soma das vendas
         this.venda3 = soma;
       });
   }
@@ -40,7 +45,9 @@ export class VendasPage implements OnInit {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
         const vendas = response.Venda.slice(0, 6); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0); // Calcula a soma das vendas
+        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
+        this.qtd6 = somaqtd  // Calcula a soma das vendas
         this.venda6 = soma;
       });
   }
@@ -48,7 +55,9 @@ export class VendasPage implements OnInit {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
         const vendas = response.Venda.slice(0, 12); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0); // Calcula a soma das vendas
+        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
+        this.qtd12 = somaqtd // Calcula a soma das vendas
         this.venda12 = soma;
       });
   }
@@ -69,15 +78,15 @@ export class VendasPage implements OnInit {
     switch (periodoSelecionado) {
       case '3 meses':
         this.faturamento = `R$${this.venda3}`;
-        this.quantidade_vendas = `${this.quantidadeVendas3Meses}`;
+        this.quantidade_vendas = `${this.qtd3}`;
         break;
       case '6 meses':
         this.faturamento = `R$${this.venda6}`;
-        this.quantidade_vendas = `${this.quantidadeVendas6Meses}`;
+        this.quantidade_vendas = `${this.qtd6}`;
         break;
       case '1 ano':
         this.faturamento = `R$${this.venda12}`;
-        this.quantidade_vendas = `${this.quantidadeVendas1Ano}`;
+        this.quantidade_vendas = `${this.qtd12}`;
         break;
       default:
         this.faturamento = '';
