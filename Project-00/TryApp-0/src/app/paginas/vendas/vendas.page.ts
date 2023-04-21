@@ -33,7 +33,6 @@ export class VendasPage implements OnInit {
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
         this.qtd3 = somaqtd  // Calcula a soma das vendas
         this.venda3 = soma;
-        this.quantidade3 = vendas.length;
       });
   }
   obterVendadoServidor6() {
@@ -44,7 +43,6 @@ export class VendasPage implements OnInit {
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
         this.qtd6 = somaqtd  // Calcula a soma das vendas
         this.venda6 = soma;
-        this.quantidade6 = vendas.length;
       });
   }
   obterVendadoServidor12() {
@@ -55,7 +53,6 @@ export class VendasPage implements OnInit {
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
         this.qtd12 = somaqtd // Calcula a soma das vendas
         this.venda12 = soma;
-        this.quantidade12 = vendas.length;
       });
   }
 
