@@ -12,11 +12,11 @@ import { HttpClient } from '@angular/common/http';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class VendasPage implements OnInit {
-  public venda3: any[] = [];
+  public venda3: number = 0;
   public qtd3: any[] = [];
-  public venda6: any[] = [];
+  public venda6: number = 0;
   public qtd6: any[] = [];
-  public venda12: any[] = [];
+  public venda12: number = 0;
   public qtd12: any[] = [];
 
   faturamento: string = '';
@@ -28,21 +28,23 @@ export class VendasPage implements OnInit {
   obterVendadoServidor3() {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
-        const vendas = response.Venda.slice(0, 3); // Obtém os primeiros 4 itens do array 'Venda'
+        const vendas = response.Venda.slice(9, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
-        this.qtd3 = somaqtd  // Calcula a soma das vendas
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
+        this.qtd3 = somaqtd;  // Calcula a soma das vendas
         this.venda3 = soma;
+
       });
   }
   obterVendadoServidor6() {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
-        const vendas = response.Venda.slice(0, 6); // Obtém os primeiros 4 itens do array 'Venda'
+        const vendas = response.Venda.slice(6, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
         this.qtd6 = somaqtd  // Calcula a soma das vendas
         this.venda6 = soma;
+        this.venda6.toFixed(2).replace('.', ',');
       });
   }
   obterVendadoServidor12() {
@@ -50,9 +52,10 @@ export class VendasPage implements OnInit {
       .subscribe((response: any) => {
         const vendas = response.Venda.slice(0, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.venda,0)
-        this.qtd12 = somaqtd // Calcula a soma das vendas
+        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
+        this.qtd12 = somaqtd; // Calcula a soma das vendas
         this.venda12 = soma;
+        this.venda12.toFixed(2).replace('.', ',');
       });
   }
 
@@ -63,7 +66,7 @@ export class VendasPage implements OnInit {
   ngOnInit() {
     this.obterVendadoServidor3();
     this.obterVendadoServidor6();
-    this.obterVendadoServidor12()
+    this.obterVendadoServidor12();
 
   }
 
@@ -71,15 +74,15 @@ export class VendasPage implements OnInit {
     const periodoSelecionado = event.detail.value;
     switch (periodoSelecionado) {
       case '3 meses':
-        this.faturamento = `R$${this.venda3}`;
+        this.faturamento = `R$${this.venda3.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         this.quantidade_vendas = `${this.qtd3}`;
         break;
       case '6 meses':
-        this.faturamento = `R$${this.venda6}`;
+        this.faturamento = `R$${this.venda6.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         this.quantidade_vendas = `${this.qtd6}`;
         break;
       case '1 ano':
-        this.faturamento = `R$${this.venda12}`;
+        this.faturamento = `R$${this.venda12.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         this.quantidade_vendas = `${this.qtd12}`;
         break;
       default:

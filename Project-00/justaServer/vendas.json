@@ -1,68 +1,69 @@
 {
     "Venda": [
         {
-            "nome": "Lucas",
-            "venda": 5,
+            "nome": "Herói", 
+            "mes": "janeiro",
+            "vendas": 5,
             "valor": 12000
         },
         {
-            "nome": "Luan",
-            "venda": 8,
+            "mes": "fevereiro",
+            "vendas": 8,
             "valor": 10000
         },
         {
-            "nome": "Arthur",
-            "venda": 7,
+            "mes": "março",
+            "vendas": 7,
             "valor": 8555
         },
           {
-            "nome": "Lucas",
-            "venda": 15,
+            "mes": "abril",
+            "vendas": 15,
             "valor": 3521
         },
         {
-            "nome": "Luan",
-            "venda": 6,
+            "mes": "maio",
+            "vendas": 6,
             "valor": 4582
         },
         {
-            "nome": "Arthur",
-            "venda": 7,
+            "mes": "junho",
+            "vendas": 7,
             "valor": 1968
         },
         {
-            "nome": "Lucas",
-            "venda": 7,
+            "mes": "julho",
+            "vendas": 7,
             "valor": 9852
         },
         {
-            "nome": "Luan",
-            "venda": 9,
+            "mes": "agosto",
+            "vendas": 9,
             "valor": 9635
         },
         {
-            "nome": "Arthur",
-            "venda": 11,
+            "mes": "setembro",
+            "vendas": 11,
             "valor": 9258
         },
         {
-            "nome": "Lucas",
-            "venda": 8,
+            "mes": "outubro",
+            "vendas": 8,
             "valor": 9822
         },
         {
-            "nome": "Luan",
-            "venda": 7,
+            "mes": "novembro",
+            "vendas": 7,
             "valor": 10000
         },
         {
-            "nome": "Arthur",
-            "venda": 6,
+            "mes": "dezembro",
+            "vendas": 6,
             "valor": 12000
         }, 
         {
-            "nome": "Arthur",
-            "venda": 8,
+            "mes": "recebível_adiantado",
+            "vendas": 8,
             "valor": 15000
         }
     ]
