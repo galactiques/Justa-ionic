@@ -16,8 +16,8 @@ export class RecebiveisPage implements OnInit {
   //adiantamento: number = 130;
 
   public adiantar: any[] = [];
-  public saldo: any[] = [];
-  
+  public saldo: number = 0;
+
 
   constructor(private http: HttpClient) {}
 
@@ -37,7 +37,7 @@ export class RecebiveisPage implements OnInit {
   }
   ngOnInit() {
     this.obterVendadoServidor(),
-    this.saldoEmConta()
+    this.saldoEmConta();
     }
-  
+
 }

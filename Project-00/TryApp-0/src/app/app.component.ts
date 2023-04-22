@@ -27,10 +27,10 @@ export class AppComponent {
 
 
   obterNomeDoServidor() {
-    this.http.get('http://localhost:8000/vendas') // Faz a requisição HTTP para o servidor
+    this.http.get('http://localhost:8000/users') // Faz a requisição HTTP para o servidor
       .subscribe((response: any) => {
-        // Obtém o nome do primeiro item do array 'Venda' do JSON retornado pelo servidor
-        this.nome = response.Venda[0].nome;
+        // Escolhendo o usuário "Arthur"
+        this.nome = response.Users[2].nome;
       });
   }
 
