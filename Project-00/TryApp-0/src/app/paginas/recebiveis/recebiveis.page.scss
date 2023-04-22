@@ -1,10 +1,27 @@
-/* saldo.page.scss */
+
 
 .titulo-saldo {
-  font-size: 24px; // tamanho da fonte para o título
+  font-size: 24px;
 }
 
 .conteudo-saldo {
 
-  font-size: 20px; // tamanho da fonte para o conteúdo
+  font-size: 20px;
+}
+
+
+ion-toolbar {
+  --ion-color-primary: #006ef5;
+  color: #fff;
+}
+
+.tabela {
+  background-color: #006ef5;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+}
+
+.centralizar{
+  text-align: center;
 }

@@ -20,15 +20,99 @@
        <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R$ {{ saldo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Adiantamento de Recebíveis</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
-  <ion-item>
-    <ion-label class="ion-text-center">
-      <h1 class="ion-text-center">Adiantamento de recebíveis(R$)</h1>
-    </ion-label>
-  </ion-item>
-  <br />
-  <br />
-  <ion-label class="ion-text-center">
-    <h1 class="ion-text-center">Você tem R${{adiantar.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}} disponíveis para adiantar!</h1>
-  <br />
-  <ion-button>Adiantar recebível</ion-button>
+  <ion-button #botaoInformacoes (click)="onClickInformacoes()" class="ion-text-center">Informações</ion-button>
+
+  <ion-grid [fixed]="true" class="ion-background-color" *ngIf="exibirTabela">
+    <ion-row>
+      <ion-col class="tabela">vendas</ion-col>
+      <ion-col class="tabela">1-4</ion-col>
+      <ion-col class="tabela">5-7</ion-col>
+      <ion-col class="tabela">8-13</ion-col>
+      <ion-col class="tabela">15+</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid [fixed]="true" class="ion-background-color" *ngIf="exibirTabela">
+    <ion-row>
+      <ion-col class="tabela">Juros</ion-col>
+      <ion-col class="tabela">2%</ion-col>
+      <ion-col class="tabela">1,5%</ion-col>
+      <ion-col class="tabela">1%</ion-col>
+      <ion-col class="tabela">0%</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Recebível a se adiantar:</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Valor:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R$ {{ adiantar.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
+         </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Vendas:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">{{ qtdvendas }}</p>
+         </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center">
+    <b>Você se encaixa no grupo de juros correspondente a {{juros_percentual}}% ao mês</b>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff"></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">
+              <ion-item>
+              <ion-select label="Selecione o tempo que você quer pagar" label-placement="floating" (ionChange)="onPeriodoChange($event)">
+                <ion-select-option value="1 mes">1 mês</ion-select-option>
+                <ion-select-option value="2 meses">2 meses</ion-select-option>
+                <ion-select-option value="3 meses">3 meses</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </p>
+         </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">taxa:</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">{{ valor_taxa.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
+         </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
