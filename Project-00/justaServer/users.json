@@ -1,0 +1,31 @@
+{
+    "Users": [
+    {
+    "nome": "Lucas",
+    "login": "lucc4s228",
+    "senha": "lucas12345",
+    "saldo": 16859.35
+    },
+
+    {
+    "nome": "Luan",
+    "login": "luann321",
+    "senha": "luan7890",
+    "saldo": 10523.12
+    },
+
+    {
+    "nome": "Arthur",
+    "login": "arthur_21",
+    "senha": "art1234",
+    "saldo": 9387.45
+    },
+    
+    {
+    "nome": "Vinicius",
+    "login": "vinix",
+    "senha": "vini5678",
+    "saldo": 12030.50
+    }
+    ]
+    }

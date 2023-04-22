@@ -1,72 +1,274 @@
 {
-    "Venda": [
+    "VendasLucas": [
         {
-            "nome": "Herói", 
             "mes": "janeiro",
             "vendas": 5,
-            "valor": 12000
+            "valor": 12350.45
         },
         {
             "mes": "fevereiro",
             "vendas": 8,
-            "valor": 10000
+            "valor": 10407.80
         },
         {
             "mes": "março",
             "vendas": 7,
-            "valor": 8555
+            "valor": 8555.48
         },
           {
             "mes": "abril",
             "vendas": 15,
-            "valor": 3521
+            "valor": 3521.36
         },
         {
             "mes": "maio",
             "vendas": 6,
-            "valor": 4582
+            "valor": 4582.67
         },
         {
             "mes": "junho",
             "vendas": 7,
-            "valor": 1968
+            "valor": 1968.23
         },
         {
             "mes": "julho",
             "vendas": 7,
-            "valor": 9852
+            "valor": 9852.34
         },
         {
             "mes": "agosto",
             "vendas": 9,
-            "valor": 9635
+            "valor": 9635.67
         },
         {
             "mes": "setembro",
             "vendas": 11,
-            "valor": 9258
+            "valor": 9258.41
         },
         {
             "mes": "outubro",
             "vendas": 8,
-            "valor": 9822
+            "valor": 9822.50
         },
         {
             "mes": "novembro",
             "vendas": 7,
-            "valor": 10000
+            "valor": 10780.34
         },
         {
             "mes": "dezembro",
             "vendas": 6,
-            "valor": 12000
+            "valor": 12230.30
         }, 
         {
             "mes": "recebível_adiantado",
             "vendas": 8,
-            "valor": 15000
+            "valor": 15050.98
         }
-    ]
+    ],
 
+    "VendasLuan": [
+        {
+            "mes": "janeiro",
+            "vendas": 3,
+            "valor": 7080.45
+        },
+        {
+            "mes": "fevereiro",
+            "vendas": 8,
+            "valor": 13040.90
+        },
+        {
+            "mes": "março",
+            "vendas": 7,
+            "valor": 9870.45
+        },
+          {
+            "mes": "abril",
+            "vendas": 10,
+            "valor": 13521.31
+        },
+        {
+            "mes": "maio",
+            "vendas": 6,
+            "valor": 4508.56
+        },
+        {
+            "mes": "junho",
+            "vendas": 5,
+            "valor": 1968
+        },
+        {
+            "mes": "julho",
+            "vendas": 6,
+            "valor": 1009.09
+        },
+        {
+            "mes": "agosto",
+            "vendas": 10,
+            "valor": 9635
+        },
+        {
+            "mes": "setembro",
+            "vendas": 10,
+            "valor": 9258
+        },
+        {
+            "mes": "outubro",
+            "vendas": 6,
+            "valor": 9822
+        },
+        {
+            "mes": "novembro",
+            "vendas": 9,
+            "valor": 10307.78
+        },
+        {
+            "mes": "dezembro",
+            "vendas": 12,
+            "valor": 14090.45
+        }, 
+        {
+            "mes": "recebível_adiantado",
+            "vendas": 3,
+            "valor": 9057.89
+        }
+    ],
+
+    "VendasArthur": [
+        {
+        "mes": "janeiro",
+        "vendas": 6,
+        "valor": 11987.65
+        },
+        {
+        "mes": "fevereiro",
+        "vendas": 9,
+        "valor": 10453.78
+        },
+        {
+        "mes": "março",
+        "vendas": 8,
+        "valor": 8754.12
+        },
+        {
+        "mes": "abril",
+        "vendas": 16,
+        "valor": 3667.89
+        },
+        {
+        "mes": "maio",
+        "vendas": 7,
+        "valor": 4732.56
+        },
+        {
+        "mes": "junho",
+        "vendas": 9,
+        "valor": 2011.23
+        },
+        {
+        "mes": "julho",
+        "vendas": 8,
+        "valor": 10098.76
+        },
+        {
+        "mes": "agosto",
+        "vendas": 10,
+        "valor": 9435.89
+        },
+        {
+        "mes": "setembro",
+        "vendas": 12,
+        "valor": 9125.43
+        },
+        {
+        "mes": "outubro",
+        "vendas": 9,
+        "valor": 9765.32
+        },
+        {
+        "mes": "novembro",
+        "vendas": 8,
+        "valor": 10234.56
+        },
+        {
+        "mes": "dezembro",
+        "vendas": 7,
+        "valor": 11876.54
+        },
+        {
+        "mes": "recebível_adiantado",
+        "vendas": 9,
+        "valor": 14987.23
+        }
+        ],
+
+        "VendasVinicius": [
+            {
+            "mes": "janeiro",
+            "vendas": 6,
+            "valor": 11987.65
+            },
+            {
+            "mes": "fevereiro",
+            "vendas": 9,
+            "valor": 10453.78
+            },
+            {
+            "mes": "março",
+            "vendas": 8,
+            "valor": 8754.12
+            },
+            {
+            "mes": "abril",
+            "vendas": 6,
+            "valor": 3667.89
+            },
+            {
+            "mes": "maio",
+            "vendas": 7,
+            "valor": 4732.56
+            },
+            {
+            "mes": "junho",
+            "vendas": 9,
+            "valor": 2011.23
+            },
+            {
+            "mes": "julho",
+            "vendas": 8,
+            "valor": 10098.76
+            },
+            {
+            "mes": "agosto",
+            "vendas": 10,
+            "valor": 9435.89
+            },
+            {
+            "mes": "setembro",
+            "vendas": 12,
+            "valor": 14125.43
+            },
+            {
+            "mes": "outubro",
+            "vendas": 9,
+            "valor": 9765.32
+            },
+            {
+            "mes": "novembro",
+            "vendas": 8,
+            "valor": 10234.56
+            },
+            {
+            "mes": "dezembro",
+            "vendas": 7,
+            "valor": 11876.54
+            },
+            {
+            "mes": "recebível_adiantado",
+            "vendas": 9,
+            "valor": 14987.23
+            }
+            ]
 
 }

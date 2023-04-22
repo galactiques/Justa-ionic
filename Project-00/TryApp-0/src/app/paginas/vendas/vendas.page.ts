@@ -28,7 +28,8 @@ export class VendasPage implements OnInit {
   obterVendadoServidor3() {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
-        const vendas = response.Venda.slice(9, 12); // Obtém os primeiros 4 itens do array 'Venda'
+        //Vendas do usuário "Arthur"
+        const vendas = response.VendasArthur.slice(9, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
         this.qtd3 = somaqtd;  // Calcula a soma das vendas
@@ -39,7 +40,7 @@ export class VendasPage implements OnInit {
   obterVendadoServidor6() {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
-        const vendas = response.Venda.slice(6, 12); // Obtém os primeiros 4 itens do array 'Venda'
+        const vendas = response.VendasArthur.slice(6, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
         this.qtd6 = somaqtd  // Calcula a soma das vendas
@@ -50,7 +51,7 @@ export class VendasPage implements OnInit {
   obterVendadoServidor12() {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
-        const vendas = response.Venda.slice(0, 12); // Obtém os primeiros 4 itens do array 'Venda'
+        const vendas = response.VendasArthur.slice(0, 12); // Obtém os primeiros 4 itens do array 'Venda'
         const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
         const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
         this.qtd12 = somaqtd; // Calcula a soma das vendas
