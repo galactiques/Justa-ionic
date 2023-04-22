@@ -14,10 +14,10 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Seu saldo em conta é: {{saldo}}</ion-card-title>
+      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Saldo em conta</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-       <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R$ {{ saldo_em_conta.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
+       <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R$ {{ saldo.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
     </ion-card-content>
   </ion-card>
 
