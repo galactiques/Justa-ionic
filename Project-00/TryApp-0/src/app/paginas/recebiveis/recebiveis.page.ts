@@ -33,7 +33,7 @@ export class RecebiveisPage implements OnInit {
     this.http.get('http://localhost:8000/vendas')
       .subscribe((response: any) => {
         //O quanto o usuário "Arthur" pode adiantar
-        this.adiantar= response.VendasArthur[12].valor
+        this.adiantar= response.VendasArthur[11].valor
       });
   }
 
@@ -48,7 +48,7 @@ export class RecebiveisPage implements OnInit {
   qtdDeVendas(){
     this.http.get('http://localhost:8000/vendas')
     .subscribe((response:any)=>{
-      this.qtdvendas = response.VendasArthur[12].vendas;
+      this.qtdvendas = response.VendasArthur[11].vendas;
       if (this.qtdvendas >= 1 && this.qtdvendas <= 4) {
         this.juros = 1.02;
         this.juros_percentual = 2;

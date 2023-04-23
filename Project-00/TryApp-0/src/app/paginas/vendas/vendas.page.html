@@ -41,6 +41,86 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-button #botaoInformacoes *ngIf="periodoSelecionado === '3 meses'" (click)="onClickInformacoes3()" class="ion-text-center">Histórico de vendas</ion-button>
+  <ion-button #botaoInformacoes *ngIf="periodoSelecionado === '6 meses'" (click)="onClickInformacoes6()" class="ion-text-center">Histórico de vendas</ion-button>
+  <ion-button #botaoInformacoes *ngIf="periodoSelecionado === '1 ano'" (click)="onClickInformacoes12()" class="ion-text-center">Histórico de vendas</ion-button>
+
+<ion-grid *ngIf="exibirTabela3">
+  <ion-row>
+    <ion-col class="tabela">
+      <h3>Mês</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Vendas</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Valor</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let venda of vendas3">
+    <ion-col class="tabela">
+      {{ venda.mes }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.vendas }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Exemplo de tabela responsiva com ion-grid, ion-row e ion-col para os últimos 6 meses -->
+<ion-grid *ngIf="exibirTabela6">
+  <ion-row>
+    <ion-col class="tabela">
+      <h3>Mês</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Vendas</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Valor</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let venda of vendas6">
+    <ion-col class="tabela">
+      {{ venda.mes }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.vendas }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Exemplo de tabela responsiva com ion-grid, ion-row e ion-col para os últimos 12 meses -->
+<ion-grid *ngIf="exibirTabela12">
+  <ion-row>
+    <ion-col class="tabela">
+      <h3>Mês</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Vendas</h3>
+    </ion-col>
+    <ion-col class="tabela">
+      <h3>Valor</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let venda of vendas12">
+    <ion-col class="tabela">
+      {{ venda.mes }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.vendas }}
+    </ion-col>
+    <ion-col class="tabela">
+      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 
 </ion-content>

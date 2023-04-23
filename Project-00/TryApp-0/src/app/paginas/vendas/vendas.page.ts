@@ -19,46 +19,52 @@ export class VendasPage implements OnInit {
   public venda12: number = 0;
   public qtd12: any[] = [];
 
+  public periodoSelecionado: string = '';
+
   faturamento: string = '';
   quantidade_vendas: string = '';
+
+  //tabelas
+  exibirTabela3 = false;
+  exibirTabela6 = false;
+  exibirTabela12 = false;
+  public vendas3: any[] = [];
+  public vendas6: any[] = [];
+  public vendas12: any[] = [];
 
   constructor(private http: HttpClient) {}
 
 
   obterVendadoServidor3() {
-    this.http.get('http://localhost:8000/vendas')
-      .subscribe((response: any) => {
-        //Vendas do usuário "Arthur"
-        const vendas = response.VendasArthur.slice(9, 12); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
-        this.qtd3 = somaqtd;  // Calcula a soma das vendas
-        this.venda3 = soma;
+    this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
+      // Armazena os dados de vendas do usuário "Arthur"
+      this.vendas3 = response.VendasArthur.slice(9, 12);
+      // Calcula a soma das vendas
+      this.qtd3 = this.vendas3.reduce((total: number, venda: any) => total + venda.vendas, 0);
+      this.venda3 = this.vendas3.reduce((total: number, venda: any) => total + venda.valor, 0);
+    });
+  }
 
-      });
-  }
   obterVendadoServidor6() {
-    this.http.get('http://localhost:8000/vendas')
-      .subscribe((response: any) => {
-        const vendas = response.VendasArthur.slice(6, 12); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
-        this.qtd6 = somaqtd  // Calcula a soma das vendas
-        this.venda6 = soma;
-        this.venda6.toFixed(2).replace('.', ',');
-      });
+    this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
+      // Armazena os dados de vendas do usuário "Arthur"
+      this.vendas6 = response.VendasArthur.slice(6, 12);
+      // Calcula a soma das vendas
+      this.qtd6 = this.vendas6.reduce((total: number, venda: any) => total + venda.vendas, 0);
+      this.venda6 = this.vendas6.reduce((total: number, venda: any) => total + venda.valor, 0);
+    });
   }
+
   obterVendadoServidor12() {
-    this.http.get('http://localhost:8000/vendas')
-      .subscribe((response: any) => {
-        const vendas = response.VendasArthur.slice(0, 12); // Obtém os primeiros 4 itens do array 'Venda'
-        const soma = vendas.reduce((total:number, venda:any) => total + venda.valor, 0);
-        const somaqtd = vendas.reduce((total:number, venda:any)=>total +venda.vendas,0);
-        this.qtd12 = somaqtd; // Calcula a soma das vendas
-        this.venda12 = soma;
-        this.venda12.toFixed(2).replace('.', ',');
-      });
+    this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
+      // Armazena os dados de vendas do usuário "Arthur"
+      this.vendas12 = response.VendasArthur.slice(0, 12);
+      // Calcula a soma das vendas
+      this.qtd12 = this.vendas12.reduce((total: number, venda: any) => total + venda.vendas, 0);
+      this.venda12 = this.vendas12.reduce((total: number, venda: any) => total + venda.valor, 0);
+    });
   }
+
 
 
 
@@ -71,9 +77,24 @@ export class VendasPage implements OnInit {
 
   }
 
+  onClickInformacoes3() {
+    this.exibirTabela3 = !this.exibirTabela3;
+  }
+
+  onClickInformacoes6() {
+    this.exibirTabela6 = !this.exibirTabela6;
+  }
+
+  onClickInformacoes12() {
+    this.exibirTabela12 = !this.exibirTabela12;
+  }
+
   onPeriodoChange(event: any) {
-    const periodoSelecionado = event.detail.value;
-    switch (periodoSelecionado) {
+    this.periodoSelecionado = event.detail.value;
+    this.exibirTabela3 = false;
+    this.exibirTabela6 = false;
+    this.exibirTabela12 = false;
+    switch (this.periodoSelecionado) {
       case '3 meses':
         this.faturamento = `R$${this.venda3.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         this.quantidade_vendas = `${this.qtd3}`;
