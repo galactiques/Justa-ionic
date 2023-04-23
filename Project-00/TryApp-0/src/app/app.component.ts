@@ -15,11 +15,9 @@ import axios from 'axios';
 export class AppComponent {
   public nome: any[] = [];
   public appPages = [
-    { title: 'Home', url: '/folder/home', icon: 'home' },
     { title: 'Vendas', url: '/vendas', icon: 'receipt' },
-    { title: 'Empréstimos', url: '/folder/emprestimos', icon: 'cash' },
+    { title: 'Empréstimos', url: '/emprestimos', icon: 'cash' },
     { title: 'Recebíveis', url: '/recebiveis', icon: 'wallet' },
-    { title: 'Conta', url: '/folder/conta', icon: 'person' },
   ];
   public labels = ['Rendimentos', 'Informações'];
 
@@ -27,7 +25,7 @@ export class AppComponent {
 
 
   obterNomeDoServidor() {
-    this.http.get('http://localhost:8000/users') // Faz a requisição HTTP para o servidor
+    this.http.get('http://localhost:8000/users') //requisição HTTP
       .subscribe((response: any) => {
         // Escolhendo o usuário "Arthur"
         this.nome = response.Users[2].nome;

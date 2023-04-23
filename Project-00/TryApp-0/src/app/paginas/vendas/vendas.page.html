@@ -65,7 +65,7 @@
       {{ venda.vendas }}
     </ion-col>
     <ion-col class="tabela">
-      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+      R${{ venda.valor.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}}
     </ion-col>
   </ion-row>
 </ion-grid>
@@ -91,7 +91,7 @@
       {{ venda.vendas }}
     </ion-col>
     <ion-col class="tabela">
-      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+      R${{ venda.valor.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}}
     </ion-col>
   </ion-row>
 </ion-grid>
@@ -117,7 +117,7 @@
       {{ venda.vendas }}
     </ion-col>
     <ion-col class="tabela">
-      {{ venda.valor | currency:'BRL':'symbol':'1.2-2' }}
+      R${{ venda.valor.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}}
     </ion-col>
   </ion-row>
 </ion-grid>
