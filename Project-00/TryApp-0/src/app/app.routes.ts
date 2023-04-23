@@ -23,6 +23,11 @@ export const routes: Routes = [
     path: 'emprestimos',
     loadComponent: () => import('./paginas/emprestimos/emprestimos.page').then( m => m.EmprestimosPage)
   },
+  {
+    path: '**',
+    loadComponent: () => import('./paginas/not-found/not-found.page').then( m => m.NotFoundPage)
+  },
+
 
 
 ];
