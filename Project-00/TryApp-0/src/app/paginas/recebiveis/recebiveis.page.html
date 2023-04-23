@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-menu-button slot="start"></ion-menu-button>
-    <ion-title>Recebíveis</ion-title>
+    <ion-title>RECEBÍVEIS</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -32,16 +32,16 @@
 
   <ion-grid [fixed]="true" class="ion-background-color" *ngIf="exibirTabela">
     <ion-row>
-      <ion-col class="tabela">vendas</ion-col>
+      <ion-col class="tabela">Vendas</ion-col>
       <ion-col class="tabela">1-4</ion-col>
       <ion-col class="tabela">5-7</ion-col>
-      <ion-col class="tabela">8-13</ion-col>
+      <ion-col class="tabela">8-14</ion-col>
       <ion-col class="tabela">15+</ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid [fixed]="true" class="ion-background-color" *ngIf="exibirTabela">
     <ion-row>
-      <ion-col class="tabela">Juros</ion-col>
+      <ion-col class="tabela">Taxa</ion-col>
       <ion-col class="tabela">2%</ion-col>
       <ion-col class="tabela">1,5%</ion-col>
       <ion-col class="tabela">1%</ion-col>
@@ -51,7 +51,7 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Recebível a se adiantar:</ion-card-title>
+      <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">Recebíveis disponíveis:</ion-card-title>
     </ion-card-header>
   </ion-card>
 
@@ -81,40 +81,51 @@
   </ion-grid>
 
   <div class="ion-text-center">
-    <b>Você se encaixa no grupo de juros correspondente a {{juros_percentual}}% ao mês</b>
+    <b>Você se encaixa no grupo de taxa correspondente a {{juros_percentual}}% ao mês</b>
   </div>
+
+
+  <ion-list>
+  <ion-item>
+    <ion-textarea label="Digite o valor:" placeholder="Adiantamento(R$)" [(ngModel)]="valor_digitado" (ionChange)="atualizarValorDigitado($event)"></ion-textarea>
+  </ion-item>
+  </ion-list>
+
 
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <ion-card>
+        <ion-card *ngIf="valor_digitado" style="height: 100px;">
           <ion-card-header>
-            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff"></ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">
+            <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">
+              <p class="conteudo-saldo ion-text-center ion-text-large">
               <ion-item>
-              <ion-select label="Selecione o tempo que você quer pagar" label-placement="floating" (ionChange)="onPeriodoChange($event)">
+              <ion-select label="Período" label-placement="floating" (ionChange)="onPeriodoChange($event)">
                 <ion-select-option value="1 mes">1 mês</ion-select-option>
                 <ion-select-option value="2 meses">2 meses</ion-select-option>
                 <ion-select-option value="3 meses">3 meses</ion-select-option>
+                <ion-select-option value="4 meses">4 meses</ion-select-option>
+                <ion-select-option value="5 meses">5 meses</ion-select-option>
+                <ion-select-option value="6 meses">6 meses</ion-select-option>
               </ion-select>
             </ion-item>
-          </p>
-         </ion-card-content>
+          </p></ion-card-title>
+          </ion-card-header>
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card>
+        <ion-card *ngIf="valor_digitado, valor_taxa" style="height: 100px;">
           <ion-card-header>
             <ion-card-title class="titulo-saldo ion-text-capitalize ion-text-center" style="color: #007bff">taxa:</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">{{ valor_taxa.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
+            <p class="conteudo-saldo ion-text-center ion-text-large" style="color: #ffffff;">R${{ valor_taxa.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}</p>
          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-button *ngIf="valor_taxa" (click)="botaoClicado()">Confirmar Valor</ion-button>
 
 </ion-content>

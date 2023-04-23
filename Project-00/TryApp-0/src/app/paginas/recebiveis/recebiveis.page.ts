@@ -12,14 +12,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
 })
 export class RecebiveisPage implements OnInit {
-  //public botaoJaClicado: boolean = false;
+  //Variáveis
+  public botaoJaClicado: boolean = false;
   public adiantar: number = 0;
   public saldo: number = 0;
   public qtdvendas: number = 0;
   public juros: number = 0;
   public juros_percentual: number = 0;
-  public valor_taxa: number =0;
+  public valor_taxa: number = 0;
   exibirTabela = false;
+  valor_digitado: number | null = null;
+  valorDigitado: number = 0;
+  periodoSelecionado: string = '';
+
   @ViewChild('botaoInformacoes', { static: false }) botaoInformacoes?: IonButton;
   constructor(private http: HttpClient) {}
 
@@ -65,43 +70,64 @@ export class RecebiveisPage implements OnInit {
     this.qtdDeVendas();
     }
 
-    /*botaoClicado(){
-      if (!this.botaoJaClicado) {
-        const confirmar = window.confirm('Você tem certeza?');
-        if (confirmar) {
-          this.saldo += this.adiantar;
-          this.botaoJaClicado = true;
+    botaoClicado() {
+      if (this.valor_digitado !== null) {
+        if (isNaN(this.valorDigitado)) {
+          alert('Por favor, digite um valor numérico válido.');
+        } else if (this.valorDigitado === 0) {
+          alert('Por favor, digite um valor maior que zero.');
+        } else if (this.valorDigitado <= this.adiantar) {
+          const confirmar = window.confirm('Você tem certeza que deseja adiantar o valor digitado?');
+          if (confirmar) {
+            this.saldo += this.valorDigitado;
+            this.adiantar -= this.valorDigitado;
+          }
+        } else {
+          alert('O valor digitado é maior do que o permitido.');
         }
       } else {
-        alert('O adiantamento já foi realizado, volte em 30 dias');
+        alert('Por favor, digite um valor.');
       }
-    }*/
+    }
+
 
     onClickInformacoes() {
-      // Altera o valor da variável de controle para mostrar ou ocultar a tabela
       this.exibirTabela = !this.exibirTabela;
     }
+
+    atualizarValorDigitado(event: any) {
+      this.valor_digitado = parseFloat(event.target.value);
+    }
+
 
 
     onPeriodoChange(event: any) {
       const periodoSelecionado = event.detail.value;
+      this.valorDigitado = Number(this.valor_digitado);
       switch (periodoSelecionado) {
         case '1 mes':
-          this.valor_taxa = this.adiantar * (this.juros) - this.adiantar
+          this.valor_taxa = this.valorDigitado * (this.juros) - this.valorDigitado
           break;
         case '2 meses':
-          this.valor_taxa = this.adiantar * (this.juros ** 2) - this.adiantar
+          this.valor_taxa = this.valorDigitado * (this.juros ** 2) - this.valorDigitado
           break;
         case '3 meses':
-          this.valor_taxa = this.adiantar * (this.juros ** 3) - this.adiantar
+          this.valor_taxa = this.valorDigitado * (this.juros ** 3) - this.valorDigitado
+          break;
+        case '4 meses':
+          this.valor_taxa = this.valorDigitado * (this.juros ** 4) - this.valorDigitado
+          break;
+        case '5 meses':
+          this.valor_taxa = this.valorDigitado * (this.juros ** 5) - this.valorDigitado
+          break;
+        case '6 meses':
+          this.valor_taxa = this.valorDigitado * (this.juros ** 6) - this.valorDigitado
           break;
         default:
           this.valor_taxa = 0;
           break;
       }
     }
-
-
   }
 
 
