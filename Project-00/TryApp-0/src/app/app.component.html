@@ -2,8 +2,18 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <div >Olá, {{nome}}</div>
-
+        <div style="display: flex; align-items: center;">
+          <span>Olá,&nbsp;</span>
+          <ion-select aria-label="contas" placeholder="conta" (ionChange)="TrocaConta($event)">
+            <ion-select-option value=0>Lucas</ion-select-option>
+            <ion-select-option value=1>Luan</ion-select-option>
+            <ion-select-option value=2>Arthur</ion-select-option>
+            <ion-select-option value=3>Vinícius</ion-select-option>
+          </ion-select>
+          <button ion-button (click)="entrar()">Entrar</button>
+        </div>
+        
+        <br>
        <div style="text-align: center;">
               <a href="https://justa.com.vc" class="logo-link" >
                 <img src="https://justa.com.vc/wp-content/themes/justa/img/svg/logo-v2.svg" alt="Logo da Justa" role="img" width="130" height="41">

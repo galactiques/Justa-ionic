@@ -4,6 +4,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import axios from 'axios';
+import { CookieService } from 'ngx-cookie-service';
+
+let selectedValue: number = 0
 
 @Component({
   selector: 'app-root',
@@ -19,25 +22,32 @@ export class AppComponent {
     { title: 'Empréstimos', url: '/emprestimos', icon: 'cash' },
     { title: 'Recebíveis', url: '/recebiveis', icon: 'wallet' },
   ];
-  public labels = ['Rendimentos', 'Informações'];
+ 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
-
-  obterNomeDoServidor() {
-    this.http.get('http://localhost:8000/users') //requisição HTTP
+  TrocaConta(event: any) {
+    const selectedValue = event.detail.value;
+    this.obterNomeDoServidor(selectedValue);
+    this.cookieService.set('selectedValue', selectedValue); // armazenando o valor em um cookie
+  }
+  
+  obterNomeDoServidor(selectedValue: number) {
+    this.http.get('http://localhost:8000/users')
       .subscribe((response: any) => {
-        // Escolhendo o usuário "Arthur"
-        this.nome = response.Users[2].nome;
+        // Escolhendo o usuário selecionado
+        this.nome = response.Users[selectedValue].nome;
       });
   }
-
-
-//Chamando
-  ngOnInit() {
-    this.obterNomeDoServidor();
-
+  
+  entrar() {
+    location.reload();
   }
 
-
+  ngOnInit() {
+    const selectedValue = this.cookieService.get('selectedValue');
+    if (selectedValue) {
+      this.obterNomeDoServidor(Number(selectedValue));
+    }
+  }
 }
