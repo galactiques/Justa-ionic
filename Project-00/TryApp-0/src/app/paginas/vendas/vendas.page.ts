@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-vendas',
@@ -12,6 +13,10 @@ import { HttpClient } from '@angular/common/http';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class VendasPage implements OnInit {
+  //aqui ao inves de var 
+  selectedValue: any;
+  nomeDoUsuario: string = '';
+  //
   public venda3: number = 0;
   public qtd3: any[] = [];
   public venda6: number = 0;
@@ -32,33 +37,67 @@ export class VendasPage implements OnInit {
   public vendas6: any[] = [];
   public vendas12: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
+  ngOnInit() {
+    const selectedValue = this.cookieService.get('selectedValue');
+    if (selectedValue) {
+     
+      this.TrocaConta(Number(selectedValue));
+    }
+  }
+  
+  TrocaConta(selectedValue: number) {
+    this.calculandoMediaMensal(this.selectedValue);
+    this.obterVendadoServidor3(this.nomeDoUsuario);
+    this.obterVendadoServidor6(this.nomeDoUsuario);
+    this.obterVendadoServidor12(this.nomeDoUsuario);
+    
+  }
 
-  obterVendadoServidor3() {
+  calculandoMediaMensal(selectedValue: string) {
+    switch (this.selectedValue) {
+      case '0':
+        this.nomeDoUsuario = 'VendasLucas';
+        break;
+      case '1':
+        this.nomeDoUsuario = 'VendasLuan';
+        break;
+      case '2':
+        this.nomeDoUsuario = 'VendasArthur';
+        break;
+      case '3':
+        this.nomeDoUsuario = 'VendasVinicius';
+        break;
+      default:
+        return;
+    }
+  }
+
+  obterVendadoServidor3(nomeDoUsuario: string) {
     this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
       // Armazena os dados de vendas do usuário "Arthur"
-      this.vendas3 = response.VendasArthur.slice(9, 12);
+      this.vendas3 = response[this.nomeDoUsuario].slice(9, 12);
       // Calcula a soma das vendas
       this.qtd3 = this.vendas3.reduce((total: number, venda: any) => total + venda.vendas, 0);
       this.venda3 = this.vendas3.reduce((total: number, venda: any) => total + venda.valor, 0);
     });
   }
 
-  obterVendadoServidor6() {
+  obterVendadoServidor6(nomeDoUsuario: string) {
     this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
       // Armazena os dados de vendas do usuário "Arthur"
-      this.vendas6 = response.VendasArthur.slice(6, 12);
+      this.vendas6 = response[this.nomeDoUsuario].slice(6, 12);
       // Calcula a soma das vendas
       this.qtd6 = this.vendas6.reduce((total: number, venda: any) => total + venda.vendas, 0);
       this.venda6 = this.vendas6.reduce((total: number, venda: any) => total + venda.valor, 0);
     });
   }
 
-  obterVendadoServidor12() {
+  obterVendadoServidor12(nomeDoUsuario: string) {
     this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
       // Armazena os dados de vendas do usuário "Arthur"
-      this.vendas12 = response.VendasArthur.slice(0, 12);
+      this.vendas12 = response[this.nomeDoUsuario].slice(0, 12);
       // Calcula a soma das vendas
       this.qtd12 = this.vendas12.reduce((total: number, venda: any) => total + venda.vendas, 0);
       this.venda12 = this.vendas12.reduce((total: number, venda: any) => total + venda.valor, 0);
@@ -67,15 +106,6 @@ export class VendasPage implements OnInit {
 
 
 
-
-
-
-  ngOnInit() {
-    this.obterVendadoServidor3();
-    this.obterVendadoServidor6();
-    this.obterVendadoServidor12();
-
-  }
 
   onClickInformacoes3() {
     this.exibirTabela3 = !this.exibirTabela3;
