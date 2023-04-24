@@ -2,15 +2,17 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
+        <br><span>Olá, {{ nome }}&nbsp;</span><br>
         <div style="display: flex; align-items: center;">
-          <span>Olá,&nbsp;</span>
-          <ion-select aria-label="contas" placeholder="conta" (ionChange)="TrocaConta($event)">
+          
+          
+          <ion-select aria-label="contas" placeholder="Mude de Herói" (ionChange)="TrocaConta($event)">
             <ion-select-option value=0>Lucas</ion-select-option>
             <ion-select-option value=1>Luan</ion-select-option>
             <ion-select-option value=2>Arthur</ion-select-option>
             <ion-select-option value=3>Vinícius</ion-select-option>
           </ion-select>
-          <button ion-button (click)="entrar()">Entrar</button>
+          <button ion-button (click)="entrar()" style="width: 25%; border-radius: 5px;">Entrar</button>
         </div>
         <!-- debug {{ nome }} -->
         <br>
