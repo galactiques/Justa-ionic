@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class VendasPage implements OnInit {
-  //aqui ao inves de var 
+  //aqui ao inves de var
   selectedValue: any;
   nomeDoUsuario: any;
   //
@@ -42,18 +42,18 @@ export class VendasPage implements OnInit {
   ngOnInit() {
     const selectedValue = this.cookieService.get('selectedValue');
     if (selectedValue) {
-     
-      this.calculandoMediaMensal(Number(selectedValue));
+
+      this.mudandoDadosUsuario(Number(selectedValue));
       this.obterVendadoServidor3(this.nomeDoUsuario);
     this.obterVendadoServidor6(this.nomeDoUsuario);
     this.obterVendadoServidor12(this.nomeDoUsuario);
     }
   }
-  
 
-  calculandoMediaMensal(selectedValue: number) {
+
+  mudandoDadosUsuario(selectedValue: number) {
     switch (selectedValue) {
-      
+
       case 0:
         this.nomeDoUsuario = 'VendasLucas';
         break;
@@ -69,12 +69,12 @@ export class VendasPage implements OnInit {
       default:
         return;
     }
-    
+
   }
 
   obterVendadoServidor3(nomeDoUsuario: string) {
     this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
-      // Armazena os dados de vendas do usuário "Arthur"
+      // Armazena os dados de vendas do usuário selecionado
       this.vendas3 = response[this.nomeDoUsuario].slice(9, 12);
       // Calcula a soma das vendas
       this.qtd3 = this.vendas3.reduce((total: number, venda: any) => total + venda.vendas, 0);

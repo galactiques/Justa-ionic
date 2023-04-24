@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-emprestimos',
@@ -12,6 +13,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
 })
 export class EmprestimosPage implements OnInit {
+
+  public selectedValue: string = '';
+
   public vendas: any[] = [];
   public media_mensal: number = 0;
   public limite: number = 0;
@@ -24,19 +28,40 @@ export class EmprestimosPage implements OnInit {
   public meses: number = 0;
   exibirTabela = false;
 
-  constructor(private http: HttpClient) { }
-
-  calculandoMediaMensal() {
-    this.http.get('http://localhost:8000/vendas').subscribe((response: any) => {
-      // Armazena os dados de vendas do usuário "Arthur"
-      this.vendas = response.VendasArthur.slice(0, 12);
-      this.media_mensal = (this.vendas.reduce((total: number, venda: any) => total + venda.valor, 0))/12;
-    });
-  }
+  constructor(public http: HttpClient, public cookieService: CookieService) { }
 
   ngOnInit() {
-    this.calculandoMediaMensal();
+    this.selectedValue = this.cookieService.get('selectedValue');
+    this.mudandoDadosUsuario(this.selectedValue);
   }
+
+
+  async mudandoDadosUsuario(selectedValue: string) {
+    const response:any = await this.http.get('http://localhost:8000/vendas').toPromise();
+    switch (selectedValue) {
+      case '0':
+        this.vendas = response.VendasLucas.slice(0, 12);
+        this.media_mensal = (this.vendas.reduce((total: number, venda: any) => total + venda.valor, 0))/12;
+        break;
+      case '1':
+        this.vendas = response.VendasLuan.slice(0, 12);
+        this.media_mensal = (this.vendas.reduce((total: number, venda: any) => total + venda.valor, 0))/12;
+        break;
+      case '2':
+        this.vendas = response.VendasArthur.slice(0, 12);
+        this.media_mensal = (this.vendas.reduce((total: number, venda: any) => total + venda.valor, 0))/12;
+        break;
+      case '3':
+        this.vendas = response.VendasVinicius.slice(0, 12);
+        this.media_mensal = (this.vendas.reduce((total: number, venda: any) => total + venda.valor, 0))/12;
+        break;
+      default:
+        return;
+    }
+
+    }
+
+
 
   onClickInformacoes() {
     this.exibirTabela = !this.exibirTabela;

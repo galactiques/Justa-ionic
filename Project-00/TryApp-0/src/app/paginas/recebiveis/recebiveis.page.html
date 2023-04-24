@@ -81,7 +81,7 @@
   </ion-grid>
 
   <div class="ion-text-center">
-    <b>Você se encaixa no grupo de taxa correspondente a {{juros_percentual}}% ao mês</b>
+    <b>Você se encaixa no grupo de taxa correspondente a {{juros_percentual.toFixed(1).replace('.', ',')}}% ao mês</b>
   </div>
 
 
@@ -126,6 +126,6 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button *ngIf="valor_taxa" (click)="botaoClicado()">Confirmar Valor</ion-button>
+  <ion-button *ngIf="valor_digitado" (click)="botaoClicado()">Confirmar Valor</ion-button>
 
 </ion-content>

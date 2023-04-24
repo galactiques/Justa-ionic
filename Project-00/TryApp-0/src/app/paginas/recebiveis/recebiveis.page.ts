@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule, IonButton } from '@ionic/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-recebiveis',
@@ -12,43 +13,65 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
 })
 export class RecebiveisPage implements OnInit {
+
+  public selectedValue: string = '';
+
+
+
   //Variáveis
   public botaoJaClicado: boolean = false;
   public adiantar: number = 0;
   public saldo: number = 0;
   public qtdvendas: number = 0;
-  public juros: number = 0;
-  public juros_percentual: number = 0;
+  public juros: number = 1.02;
+  public juros_percentual: number = 2;
   public valor_taxa: number = 0;
   exibirTabela = false;
   valor_digitado: number | null = null;
   valorDigitado: number = 0;
   periodoSelecionado: string = '';
+  public num: number =0;
 
   @ViewChild('botaoInformacoes', { static: false }) botaoInformacoes?: IonButton;
-  constructor(private http: HttpClient) {}
 
+  constructor(public http: HttpClient, public cookieService: CookieService) {}
 
-  obterVendadoServidor() {
-    this.http.get('http://localhost:8000/vendas')
-      .subscribe((response: any) => {
-        //O quanto o usuário "Arthur" pode adiantar
-        this.adiantar= response.VendasArthur[11].valor
-      });
+  ngOnInit() {
+    this.selectedValue = this.cookieService.get('selectedValue');
+    console.log(this.selectedValue);
+    this.mudandoDadosUsuario(this.selectedValue);
+    console.log(this.qtdvendas);
+    console.log(this.adiantar);
+    this.saldoEmConta(this.num);
+
   }
 
-  saldoEmConta(){
-    this.http.get('http://localhost:8000/users')
-    .subscribe((response:any)=>{
-      //pegando o saldo do usuário "Arthur"
-      this.saldo = response.Users[2].saldo;
-    })
-  }
-
-  qtdDeVendas(){
-    this.http.get('http://localhost:8000/vendas')
-    .subscribe((response:any)=>{
-      this.qtdvendas = response.VendasArthur[11].vendas;
+  async mudandoDadosUsuario(selectedValue: string) {
+    const response:any = await this.http.get('http://localhost:8000/vendas').toPromise();
+    switch (selectedValue) {
+      case '0':
+        this.num = 0;
+        this.qtdvendas = response.VendasLucas[11].vendas;
+        this.adiantar = response.VendasLucas[11].valor;
+        break;
+      case '1':
+        this.num = 1;
+        this.qtdvendas = response.VendasLuan[11].vendas;
+        this.adiantar = response.VendasLuan[11].valor;
+        break;
+      case '2':
+        this.num = 2;
+        this.qtdvendas = response.VendasArthur[11].vendas;
+        this.adiantar = response.VendasArthur[11].valor;
+        break;
+      case '3':
+        this.num = 3;
+        this.qtdvendas = response.VendasVinicius[11].vendas;
+        this.adiantar = response.VendasVinicius[11].valor;
+        break;
+      default:
+        return;
+    }
       if (this.qtdvendas >= 1 && this.qtdvendas <= 4) {
         this.juros = 1.02;
         this.juros_percentual = 2;
@@ -62,13 +85,18 @@ export class RecebiveisPage implements OnInit {
         this.juros = 1;
         this.juros_percentual = 0;
       }
+    }
+
+
+  saldoEmConta(num: number){
+    this.http.get('http://localhost:8000/users')
+    .subscribe((response:any)=>{
+      //pegando o saldo do usuário "Arthur"
+      this.saldo = response.Users[this.num].saldo;
     })
   }
-  ngOnInit() {
-    this.obterVendadoServidor();
-    this.saldoEmConta();
-    this.qtdDeVendas();
-    }
+
+
 
     botaoClicado() {
       if (this.valor_digitado !== null) {
