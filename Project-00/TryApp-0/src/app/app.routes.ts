@@ -7,11 +7,6 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'folder/:id',
-    loadComponent: () =>
-      import('./folder/folder.page').then((m) => m.FolderPage),
-  },
-  {
     path: 'vendas',
     loadComponent: () => import('./paginas/vendas/vendas.page').then( m => m.VendasPage)
   },
@@ -23,6 +18,11 @@ export const routes: Routes = [
     path: 'emprestimos',
     loadComponent: () => import('./paginas/emprestimos/emprestimos.page').then( m => m.EmprestimosPage)
   },
+  {
+    path: '**',
+    loadComponent: () => import('./paginas/not-found/not-found.page').then( m => m.NotFoundPage)
+  },
+
 
 
 ];
