@@ -46,6 +46,20 @@
     </ion-row>
   </ion-grid>
 
+  <div class="ion-text-center">
+    <b>juros de 3% ao mês</b>
+  </div>
+
+  <ion-list>
+    <ion-item *ngIf="limite">
+      <ion-textarea label="Digite o valor:" placeholder="Adiantamento(R$)" [(ngModel)]="valor_digitado" (ionChange)="atualizarValorDigitado($event)"></ion-textarea>
+    </ion-item>
 
 
+    <ion-button #botaoInformacoes *ngIf="valor_digitado" (click)="onClickInformacoes()" class="ion-text-center">Valor aplicado ao juros</ion-button>
+      <div *ngIf="exibirTabela">
+        <b class="ion-text-end">R$${{valor_final.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2})}}</b>
+      </div>
+    </ion-list>
+    <ion-button class="button" *ngIf="valor_digitado" (click)="botaoClicado()">Confirmar Valor</ion-button>
 </ion-content>
