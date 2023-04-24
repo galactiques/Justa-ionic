@@ -24,7 +24,7 @@ export class AppComponent {
   ];
  
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(public http: HttpClient, public cookieService: CookieService) {}
 
   TrocaConta(event: any) {
     const selectedValue = event.detail.value;

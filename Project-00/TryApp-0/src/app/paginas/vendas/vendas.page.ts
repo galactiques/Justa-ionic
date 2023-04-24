@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class VendasPage implements OnInit {
   //aqui ao inves de var 
   selectedValue: any;
-  nomeDoUsuario: string = '';
+  nomeDoUsuario: any;
   //
   public venda3: number = 0;
   public qtd3: any[] = [];
@@ -37,41 +37,39 @@ export class VendasPage implements OnInit {
   public vendas6: any[] = [];
   public vendas12: any[] = [];
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(public http: HttpClient, public cookieService: CookieService) {}
 
   ngOnInit() {
     const selectedValue = this.cookieService.get('selectedValue');
     if (selectedValue) {
      
-      this.TrocaConta(Number(selectedValue));
+      this.calculandoMediaMensal(Number(selectedValue));
+      this.obterVendadoServidor3(this.nomeDoUsuario);
+    this.obterVendadoServidor6(this.nomeDoUsuario);
+    this.obterVendadoServidor12(this.nomeDoUsuario);
     }
   }
   
-  TrocaConta(selectedValue: number) {
-    this.calculandoMediaMensal(this.selectedValue);
-    this.obterVendadoServidor3(this.nomeDoUsuario);
-    this.obterVendadoServidor6(this.nomeDoUsuario);
-    this.obterVendadoServidor12(this.nomeDoUsuario);
-    
-  }
 
-  calculandoMediaMensal(selectedValue: string) {
-    switch (this.selectedValue) {
-      case '0':
+  calculandoMediaMensal(selectedValue: number) {
+    switch (selectedValue) {
+      
+      case 0:
         this.nomeDoUsuario = 'VendasLucas';
         break;
-      case '1':
+      case 1:
         this.nomeDoUsuario = 'VendasLuan';
         break;
-      case '2':
+      case 2:
         this.nomeDoUsuario = 'VendasArthur';
         break;
-      case '3':
+      case 3:
         this.nomeDoUsuario = 'VendasVinicius';
         break;
       default:
         return;
     }
+    
   }
 
   obterVendadoServidor3(nomeDoUsuario: string) {
