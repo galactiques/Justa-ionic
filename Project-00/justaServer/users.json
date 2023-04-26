@@ -5,7 +5,8 @@
     "nome": "Lucas",
     "login": "lucc4s228",
     "senha": "lucas12345",
-    "saldo": 16859.35
+    "saldo": 16859.35,
+    "taxa_recebiveis":0
     },
 
     {
@@ -13,7 +14,8 @@
     "nome": "Luan",
     "login": "luann321",
     "senha": "luan7890",
-    "saldo": 10523.12
+    "saldo": 10523.12,
+    "taxa_recebiveis":0
     },
 
     {
@@ -21,7 +23,8 @@
     "nome": "Arthur",
     "login": "arthur_21",
     "senha": "art1234",
-    "saldo": 2325.78
+    "saldo": 2325.78,
+    "taxa_recebiveis":0
     },
     
     {
@@ -29,7 +32,8 @@
     "nome": "Vinicius",
     "login": "vinix",
     "senha": "vini5678",
-    "saldo": 3598.98
+    "saldo": 3598.98,
+    "taxa_recebiveis":0
     }
     ]
     }
