@@ -17,7 +17,7 @@ export function modificaSaldo(modificacoes, id){
 */
 
   
-  export function modificaSaldo(modificacoes, id){
+export function modificaSaldo(modificacoes, id){
     try {
       let saldoAtual = JSON.parse(fs.readFileSync('users.json'))
       saldoAtual = Object.values(saldoAtual.Users[0]);
@@ -29,13 +29,14 @@ export function modificaSaldo(modificacoes, id){
         return;
       }  
       const conteudoMudado = {...saldoAtual[indiceModificado], saldo: modificacoes.saldo}
+  
       saldoAtual[indiceModificado] = conteudoMudado
       fs.writeFileSync('users.json', JSON.stringify({Users: [saldoAtual]}))
     } catch (error) {
       console.error(error)
     }
-  }
-  
+}
+
   
 
   
