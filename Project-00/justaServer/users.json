@@ -1,6 +1,7 @@
 {
     "Users": [
     {
+    "id": "1",
     "nome": "Lucas",
     "login": "lucc4s228",
     "senha": "lucas12345",
@@ -8,6 +9,7 @@
     },
 
     {
+    "id": "2",
     "nome": "Luan",
     "login": "luann321",
     "senha": "luan7890",
@@ -15,6 +17,7 @@
     },
 
     {
+    "id": "3",
     "nome": "Arthur",
     "login": "arthur_21",
     "senha": "art1234",
@@ -22,6 +25,7 @@
     },
     
     {
+    "id": "4",
     "nome": "Vinicius",
     "login": "vinix",
     "senha": "vini5678",
