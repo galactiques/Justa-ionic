@@ -22,7 +22,7 @@ export class AppComponent {
     { title: 'Empréstimos', url: '/emprestimos', icon: 'cash' },
     { title: 'Recebíveis', url: '/recebiveis', icon: 'wallet' },
   ];
- 
+
 
   constructor(public http: HttpClient, public cookieService: CookieService) {}
 
@@ -31,15 +31,15 @@ export class AppComponent {
     this.obterNomeDoServidor(selectedValue);
     this.cookieService.set('selectedValue', selectedValue); // armazenando o valor em um cookie
   }
-  
+
   obterNomeDoServidor(selectedValue: number) {
-    this.http.get('http://localhost:8000/users')
+    this.http.get('http://15.229.117.8:8000/users')
       .subscribe((response: any) => {
         // Escolhendo o usuário selecionado
         this.nome = response.Users[selectedValue].nome;
       });
   }
-  
+
   entrar() {
     location.reload();
   }
